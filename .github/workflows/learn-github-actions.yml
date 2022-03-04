@@ -1,5 +1,17 @@
 name: learn-github-actions
-on: [push]
+on: 
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'what? vfaserver | mms | sc | vfaadmin'
+        required: true
+        default: 'vfaserver'
+      environment:
+        description: 'where? staging | staging2 | preprod | production'
+        required: true
+        default: 'staging'
+      branch:
+        description: 'branch? (optional, defaults at RailsDeployer/deploys.yml)'
 jobs:
   check-bats-version:
     runs-on: self-hosted 
